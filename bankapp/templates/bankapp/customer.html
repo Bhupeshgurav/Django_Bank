@@ -1,0 +1,79 @@
+{% extends 'bankapp/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset= "utf-8">
+	<title>Customer</title>
+	<meta name="viewport" content="width = device-width, initial-scale = 1.0">
+	<link rel="stylesheet" href="{% static 'bankapp/css/styles.css'%}">
+</head>
+<body>
+
+<h1><center> Customer details</center></h1>
+<br></br>
+
+	
+
+
+	<center>
+		
+		<table class="c_table">
+			
+				<tr>
+					<th>No.</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Amount Balance</th>
+					
+				</tr>
+			
+			
+				{% for list in customer %}
+				<tr>
+					<td>{{list.id}}</td>
+					<td>{{list.name}}</td>
+					<td>{{list.email}}</td>
+					<td>₹ {{list.available_bal}}</td>
+					
+				</tr>
+				
+				{% endfor %}
+			
+
+		</table>
+	</center>
+</br>
+	<div ><center>
+		<h2 class="t2">SEND MONEY</h2>
+		<form method="post">{% csrf_token %}
+		<div class = "form-group"class="text-field">
+			<label for="exampleInputEmail1">Email</label>
+			<input type="email" class = "form-control" id="exampleInputEmail1"aria-describedby="emailHelp" name="semail" placeholder="Enter your Email">
+		</div>
+		<div class= "form-group"class="text-field">
+			<label >Amount</label>
+			<input type="Amount" name="amt" class = "form-control" id = "Amount"placeholder="Enter Amount">
+		</div></br>
+			<select id="email" name="email">
+				<option value="alanfernandes@gmail.com">Select Reciever Email</option>
+				{% for i in customer %}
+				<option value="{{i.email}}">{{i.name}}</option>
+				{% endfor %}
+
+			</select></br></br>
+			<input type="submit" class="btn btn-primary" name="submit" value="SEND"></input>
+  
+		</form>
+	</center></div>
+
+
+	
+
+</body>
+</html>
+{% endblock %}

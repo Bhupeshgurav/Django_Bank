@@ -1,0 +1,50 @@
+{% extends 'bankapp/base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset= "utf-8">
+	<title>Customer</title>
+	<meta name="viewport" content="width = device-width, initial-scale = 1.0">
+	<link rel="stylesheet" href="{% static 'bankapp/css/styles.css'%}">
+</head>
+<body>
+	<h1><center> Transaction details</center></h1>
+	<br></br>
+	<center>
+		
+		<table class="c_table">
+			
+				<tr>
+					<th>No.</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Account Bal</th>
+					<th>Transfer Amount</th>
+					<th>Available Balance</th>
+				</tr>
+			
+			
+				{% for list in transaction %}
+				<tr>
+					<td>{{list.id}}</td>
+					<td>{{list.name}}</td>
+					<td>{{list.email}}</td>
+					<td>{{list.debitted_amt}}</td>
+					<td>{{list.credited_amt}}</td>
+					<td>{{list.account_bal}}</td>
+					
+				</tr>
+				
+				
+				{% endfor %}
+			
+
+		</table>
+	</center>
+</body>
+
+
+
+{% endblock %}
