@@ -47,7 +47,7 @@ def customer_details(request):
 					query4.save()
 					query3.save()
 	                
-					return redirect('bankapp/customer')
+					return redirect('/customer')
 
 
 					break
